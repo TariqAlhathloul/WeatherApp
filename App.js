@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 /* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
 import React from 'react';
@@ -8,7 +9,7 @@ import {View,
   FlatList,
   Text,
   StatusBar,
-  Image} from 'react-native';
+  ImageBackground} from 'react-native';
 import CurrentWeather from './src/components/currentWeather';
 import UpComingWeather from './src/components/UpComingWeather';
 import {Feather} from '@expo/vector-icons';
@@ -22,31 +23,39 @@ const DATA = [
   {
     dt_text: '2024-01-03 12:00:00',
     main: {
-      temp: 296.31,
-      feels_like: 296.07,
-      temp_min: 296.2,
       temp_max: 296.31,
+      temp_min: 290.2,
     },
     Weather: [
       {
         main: 'Rain',
-      },
-    ],
+      }
+    ]
   },
 
   {
-    dt_text: '2024-01-03 12:00:00',
+    dt_text: '2024-01-03 15:00:00',
     main: {
-      temp: 296.31,
-      feels_like: 296.07,
-      temp_min: 296.2,
-      temp_max: 296.31,
+      temp_max: 160.31,
+      temp_min: 150.2,
     },
     Weather: [
       {
         main: 'Snow',
-      },
-    ],
+      }
+    ]
+  },
+  {
+    dt_text: '2024-01-03 18:00:00',
+    main: {
+      temp_max: 200.31,
+      temp_min: 199.2,
+    },
+    Weather: [
+      {
+        main: 'Clear',
+      }
+    ]
   },
 ];
 
@@ -58,13 +67,13 @@ const DATA = [
 
 const Item = (props) => {
 // eslint-disable-next-line react/prop-types
-  const {dt_text, temp_min, temp_max, condition, main} = props;
+  const {dt_text, min, max, condition} = props;
   return (
-    <View>
+    <View style={styles.item}>
       <Feather name={'sun'} size={'50'} color={'white'}/>
       <Text styles={styles.date}>{dt_text}</Text>
-      <Text styles={styles.temp}>{temp_min}</Text>
-      <Text styles={styles.temp}>{temp_max}</Text>
+      <Text styles={styles.temp}>{min}</Text>
+      <Text styles={styles.temp}>{max}</Text>
     </View>
   );
 };
@@ -85,20 +94,20 @@ const EmptyList = () => {
  */
 const App = () => {
   // eslint-disable-next-line no-unused-vars
-  const renderItem = () => {
+  const renderItem = ({item}) => {
     return (
       <Item
-        condition={Item.Weather[0].main}
-        dt_text={dt_text}
-        temp_min={temp_min}
-        temp_max={temp_max}
+        condition={item.Weather[0].main}
+        dt_text={item.dt_text}
+        min={item.main.temp_min}
+        temp_max={item.main.temp_max}
       />);
   };
 
   return (
-    <SafeAreaView style={styles.SafeContainer}>
+    <SafeAreaView style={styles.container}>
       <Text>Up Coming Weather</Text>
-      <Image
+      <ImageBackground
         source={require('./assets/up-comingWeatherBacground.jpg')}
         style={styles.image}
       />
@@ -116,7 +125,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 50,
-    flex: 1,
     backgroundColor: 'plum',
     marginTop: StatusBar.currentHeight || 0,
   },
