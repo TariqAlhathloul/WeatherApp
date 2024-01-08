@@ -1,10 +1,10 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 const UpComingWeather = () => {
   return (
-    <SafeAreaView styles = {styles.container}>
-      <Text>UpComingWeather</Text>
-    </SafeAreaView>
+    <View styles={styles.container}>
+      <UpComingWeather/>
+    </View>
   );
 };
 

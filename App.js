@@ -2,14 +2,22 @@
 /* eslint-disable camelcase */
 import React from 'react';
 // eslint-disable-next-line max-len
-import {View, StyleSheet, SafeAreaView, FlatList, Text, statusBar} from 'react-native';
+import {View,
+  StyleSheet,
+  SafeAreaView,
+  FlatList,
+  Text,
+  StatusBar,
+  Image} from 'react-native';
 import CurrentWeather from './src/components/currentWeather';
 import UpComingWeather from './src/components/UpComingWeather';
 import {Feather} from '@expo/vector-icons';
+
 /**
  * Represents an array of weather data.
  * @type {Array}
  */
+
 const DATA = [
   {
     dt_text: '2024-01-03 12:00:00',
@@ -25,6 +33,7 @@ const DATA = [
       },
     ],
   },
+
   {
     dt_text: '2024-01-03 12:00:00',
     main: {
@@ -49,7 +58,7 @@ const DATA = [
 
 const Item = (props) => {
 // eslint-disable-next-line react/prop-types
-  const {dt_text, temp_min, temp_max, condition} = props;
+  const {dt_text, temp_min, temp_max, condition, main} = props;
   return (
     <View>
       <Feather name={'sun'} size={'50'} color={'white'}/>
@@ -79,7 +88,7 @@ const App = () => {
   const renderItem = () => {
     return (
       <Item
-        condition={condition.Weather[0].main}
+        condition={Item.Weather[0].main}
         dt_text={dt_text}
         temp_min={temp_min}
         temp_max={temp_max}
@@ -89,9 +98,13 @@ const App = () => {
   return (
     <SafeAreaView style={styles.SafeContainer}>
       <Text>Up Coming Weather</Text>
+      <Image
+        source={require('./assets/up-comingWeatherBacground.jpg')}
+        style={styles.image}
+      />
       <FlatList
         data={DATA}
-        renderItem={({item}) => <UpComingWeather data={item} />}
+        renderItem={renderItem}
         keyExtractor={(item) => item.dt_text}
         ListEmptyComponent={EmptyList}
       />
@@ -99,14 +112,13 @@ const App = () => {
   );
 };
 
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 50,
     flex: 1,
     backgroundColor: 'plum',
-    marginTop: statusBar.currentHeight || 0,
+    marginTop: StatusBar.currentHeight || 0,
   },
   item: {
     backgroundColor: 'plum',
@@ -124,6 +136,11 @@ const styles = StyleSheet.create({
   date: {
     fontSize: 15,
     color: 'white',
+  },
+  image: {
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center',
   },
 });
 
