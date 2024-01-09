@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-undef */
 /* eslint-disable comma-dangle */
 /* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
@@ -46,7 +47,7 @@ const DATA = [
     ]
   },
   {
-    dt_text: '2024-01-03 18:00:00',
+    dt_text: '2024-01-07 18:00:00',
     main: {
       temp_max: 200.31,
       temp_min: 199.2,
@@ -70,7 +71,7 @@ const Item = (props) => {
   const {dt_text, min, max, condition} = props;
   return (
     <View style={styles.item}>
-      <Feather name={'sun'} size={'50'} color={'white'}/>
+      <Feather name={'sun'} size={50} color={'black'} />
       <Text styles={styles.date}>{dt_text}</Text>
       <Text styles={styles.temp}>{min}</Text>
       <Text styles={styles.temp}>{max}</Text>
@@ -148,7 +149,6 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     resizeMode: 'cover',
-    justifyContent: 'center',
   },
 });
 
