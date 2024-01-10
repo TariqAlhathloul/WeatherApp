@@ -47,7 +47,7 @@ const DATA = [
     ]
   },
   {
-    dt_text: '2024-01-07 18:00:00',
+    dt_text: '2024-01-09 18:00:00',
     main: {
       temp_max: 200.31,
       temp_min: 199.2,
@@ -107,17 +107,19 @@ const App = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text>Up Coming Weather</Text>
       <ImageBackground
         source={require('./assets/up-comingWeatherBacground.jpg')}
         style={styles.image}
-      />
-      <FlatList
-        data={DATA}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.dt_text}
-        ListEmptyComponent={EmptyList}
-      />
+        resizeMode='cover'
+      >
+        <Text>Up Coming Weather</Text>
+        <FlatList
+          data={DATA}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.dt_text}
+          ListEmptyComponent={EmptyList}
+        />
+      </ImageBackground>
     </SafeAreaView>
   );
 };
@@ -125,8 +127,7 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 50,
-    backgroundColor: 'plum',
+    backgroundColor: 'royalblue',
     marginTop: StatusBar.currentHeight || 0,
   },
   item: {
@@ -148,7 +149,7 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    resizeMode: 'cover',
+    justifyContent: 'center',
   },
 });
 
