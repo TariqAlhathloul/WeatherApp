@@ -1,23 +1,27 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import {Feather} from '@expo/vector-icons';
-import {MaterialCommunityIcons} from '@expo/vector-icons';
 
 const IconText = (props) => {
-  // eslint-disable-next-line react/prop-types
-  const {iconName, iconeColor, bodyText} = props;
+  const {iconName, iconColor, bodyText} = props;
   return (
     <View>
-      <MaterialCommunityIcons
-        name={iconName} size={50} color={iconeColor} />
+      <Feather
+        name={iconName}
+        size={50}
+        color={iconColor} />
       <Text style={styles.TextTheme}>{bodyText}</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+  },
   TextTheme: {
-    fontSize: 20,
+    fontSize: 30,
     fontWeight: 'bold',
     color: 'white',
     textAlign: 'center',

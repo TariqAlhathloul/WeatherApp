@@ -4,13 +4,11 @@ import {Text,
   StyleSheet,
   ImageBackground,
   StatusBar, View} from 'react-native';
-import {MaterialCommunityIcons} from '@expo/vector-icons';
-import {Feather} from '@expo/vector-icons';
 import IconText from '../IconText';
 
 const City = () => {
   const {container, image, CityName,
-    CountryName, population, riseSetWarapper, TextSet} = styles;
+    CountryName, population, riseSetWarapper} = styles;
   return (
     <SafeAreaView style = {container}>
       <ImageBackground
@@ -20,15 +18,24 @@ const City = () => {
       >
         <Text style={[CountryName]}>Saudi Arabia</Text>
         <Text style={[CityName]}>Riyadh</Text>
-        <View style={population}>
-          <IconText iconeName={'nature-people'}
-            size={50} iconeColor={'black'} bodyText={'13,750,000'} />
+        <View style={[population, rowLayout]}>
+          <IconText
+            iconName={'user'}
+            iconColor={'white'}
+            bodyText={'13,750,000'} />
         </View>
-        <View style={riseSetWarapper}>
-          <Feather name="sunrise" size={45} color="white" />
-          <Text style={TextSet}>06:40am</Text>
-          <Feather name="sunset" size={45} color="white" />
-          <Text style={TextSet}>05:22pm</Text>
+        <View style={[riseSetWarapper, rowLayout]}>
+          <IconText
+            iconName={'sunrise'}
+            iconColor={'white'}
+            bodyText={'06:40am'}
+            size={45} />
+
+          <IconText
+            iconName={'sunset'}
+            iconColor={'white'}
+            bodyText={'05:22pm'}
+            size={45} />
         </View>
       </ImageBackground>
     </SafeAreaView>
@@ -57,8 +64,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   population: {
-    flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'center',
     marginTop: 30,
     fontSize: 30,
@@ -72,8 +77,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   riseSetWarapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'space-around',
     marginTop: 30,
   },
@@ -82,6 +85,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'white',
     textAlign: 'center',
+  },
+  rowLayout: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
 
