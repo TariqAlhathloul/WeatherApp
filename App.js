@@ -3,12 +3,13 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import City from './src/components/screens/City';
+import CurrentWeather from './src/components/screens/CurrentWeather';
 
 const App = () => {
   const {container} = styles;
   return (
     <View style={container}>
-      <City />
+      <CurrentWeather />
     </View>
   );
 };

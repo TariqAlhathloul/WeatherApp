@@ -11,7 +11,7 @@ import {View,
   Text,
   StatusBar,
   ImageBackground} from 'react-native';
-import CurrentWeather from './src/components/currentWeather';
+import CurrentWeather from './src/components/CurrentWeather';
 import OurChild from './src/components/OurChild';
 import {Feather} from '@expo/vector-icons';
 import ListItem from './src/components/ListItem';

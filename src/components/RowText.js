@@ -1,17 +1,21 @@
 import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, View} from 'react-native';
 
-cont RowText = () => {
 
-    return (
-        <View style={styles.highLowWrapper}>
-        <Text style={styles.highLow}>High: 8 </Text>
-        <Text style={styles.highLow}>Low: 5</Text>
-      </View>
-    );
+const RowText = (props) => {
+  // eslint-disable-next-line react/prop-types
+  const {containerStyles, messageOne,
+    // eslint-disable-next-line react/prop-types
+    messageTwo, messageOneStyle,
+    // eslint-disable-next-line react/prop-types
+    messageTwoStyle} = props;
+  return (
+    <View style={containerStyles}>
+      <Text style={messageOneStyle}>{messageOne}</Text>
+      <Text style={messageTwoStyle}>{messageTwo}</Text>
+    </View>
+  );
 };
 
 
-const styles = StyleSheet.create({
-});
 export default RowText;
