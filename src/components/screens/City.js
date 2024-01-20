@@ -8,7 +8,7 @@ import IconText from '../IconText';
 
 const City = () => {
   const {container, image, CityName,
-    CountryName, population, riseSetWarapper} = styles;
+    CountryName, population, riseSetWarapper, rowLayout} = styles;
   return (
     <SafeAreaView style = {container}>
       <ImageBackground
